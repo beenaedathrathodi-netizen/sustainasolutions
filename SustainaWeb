@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustaina Solutions LLP | Development Consultancy & Knowledge Solutions</title>
+    <style>
+        :root {
+            --primary: #0f4c3a;
+            --secondary: #1e7056;
+            --accent: #e69c24;
+            --light-bg: #f4f8f6;
+            --dark-text: #1a2521;
+            --muted: #52635c;
+            --white: #ffffff;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.65;
+        }
+
+        /* Navbar */
+        header.navbar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 14px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+        .brand h1 {
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            color: var(--white);
+        }
+        .brand span {
+            font-size: 12px;
+            color: var(--accent);
+            display: block;
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #e2f1ec;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 76, 58, 0.94), rgba(16, 42, 35, 0.92)),
+                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 85px 20px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(230, 156, 36, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .hero h2 {
+            font-size: 36px;
+            max-width: 820px;
+            margin: 0 auto 14px;
+            line-height: 1.25;
+        }
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto 28px;
+            font-size: 17px;
+            color: #d8eae3;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark-text);
+            padding: 12px 26px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        /* Differentiator Strip */
+        .diff-bar {
+            background: var(--white);
+            padding: 22px 6%;
+            text-align: center;
+            border-bottom: 1px solid #dce8e3;
+        }
+        .diff-bar p {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .diff-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .pill {
+            background: #e6f2ee;
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        /* Section Common */
+        section {
+            padding: 60px 6%;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+        .section-header h2 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .section-header p {
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        /* About & Vision/Mission */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+        }
+        .card-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+        .card-box h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+        .card-box ul {
+            padding-left: 18px;
+            font-size: 14px;
+            color: #333;
+        }
+        .card-box li {
+            margin-bottom: 5px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .value-card {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .value-card h4 {
+            color: var(--primary);
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+        .value-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* 10 Service Areas */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 22px;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .service-num {
+            display: inline-block;
+            background: #e6f2ee;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 12px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            width: fit-content;
+        }
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+        .service-card ul {
+            padding-left: 18px;
+            font-size: 13.5px;
+            color: #333;
+        }
+        .service-card li {
+            margin-bottom: 4px;
+        }
+
+        /* 6-Stage Approach */
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 15px;
+        }
+        .step-card {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 16px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .step-num {
+            background: var(--accent);
+            color: var(--dark-text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .step-card h4 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+        .step-card p {
+            font-size: 13px;
+            color: #e0f0eb;
+        }
+
+        /* Who We Work With */
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .sector-box {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid #d8e6e0;
+        }
+        .sector-box h4 {
+            color: var(--primary);
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+        .sector-box p {
+            font-size: 13.5px;
+            color: var(--muted);
+        }
+
+        /* Founders & Partners */
+        .founder-highlight {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+        .founder-highlight h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .founder-role {
+            color: #b57c14;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .exp-tag {
+            background: #f0f6f4;
+            border: 1px solid #cde0d9;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+        .partner-card {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 8px;
+            border-top: 3px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .partner-card h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        .partner-card span {
+            display: block;
+            font-size: 12px;
+            color: #b57c14;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .partner-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* Contact & Proposal Form */
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            border: 1px solid #c8d9d2;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .contact-form label {
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            background: #092e23;
+            color: #cfe3dc;
+            text-align: center;
+            padding: 40px 6% 25px;
+            font-size: 14px;
+        }
+        @media (max-width: 650px) {
+            .hero h2 { font-size: 26px; }
+            .nav-links { margin-top: 10px; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="brand">
+            <h1>SUSTAINA SOLUTIONS LLP</h1>
+            <span>"From Development Ideas to Sustainable Solutions"</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About & Values</a></li>
+            <li><a href="#services">10 Service Areas</a></li>
+            <li><a href="#approach">Our Approach</a></li>
+            <li><a href="#clients">Who We Serve</a></li>
+            <li><a href="#leadership">Leadership (7 Partners)</a></li>
+            <li><a href="#contact">Request Proposal</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <span class="hero-tag">Development Consultancy & Knowledge Solutions</span>
+        <h2>Supporting Inclusive, Sustainable & Community-Led Development</h2>
+        <p>Bridging the gap between development ideas and effective implementation by combining deep field-based understanding with professional consulting, research, training, documentation, and responsible AI capabilities.</p>
+        <div class="hero-btns">
+            <a href="#contact" class="btn-primary">📋 Request a Consultancy Proposal</a>
+            <a href="#services" class="btn-outline">Explore Our 10 Service Areas</a>
+        </div>
+    </section>
+
+    <!-- Differentiator Strip -->
+    <div class="diff-bar">
+        <p>"We understand development not only from the desk, but also from the field."</p>
+        <div class="diff-pills">
+            <span class="pill">✔ Field Experience</span>
+            <span class="pill">✔ Community Understanding</span>
+            <span class="pill">✔ Institutional Experience</span>
+            <span class="pill">✔ Development Knowledge</span>
+            <span class="pill">✔ Professional Consulting</span>
+            <span class="pill">✔ Development Communication</span>
+            <span class="pill">✔ Digital & Responsible AI Capability</span>
+        </div>
+    </div>
+
+    <!-- About, Vision, Mission & Values -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About Sustaina Solutions LLP</h2>
+            <p>Translating development ideas into practical, context-sensitive and measurable solutions while keeping people, institutions, evidence and learning at the centre.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card-box">
+                <h3>🌍 Who We Are</h3>
+                <p style="font-size:14px;"><strong>Sustaina Solutions LLP</strong> is a development and social impact consultancy providing professional support across social development, poverty reduction, livelihoods, gender & social inclusion, local governance, community mobilisation, project planning, research, training, IEC campaigns, and knowledge management.</p>
+            </div>
+            <div class="card-box">
+                <h3>🎯 Our Vision & Commitment</h3>
+                <p style="font-size:14px;"><strong>Vision:</strong> To contribute to a more inclusive, equitable and sustainable society by strengthening people, institutions and development initiatives.</p>
+                <p style="font-size:14px; margin-top:8px;"><strong>Commitment:</strong> Context-sensitive consulting rather than generic templates, treating communities as active agents of development.</p>
+            </div>
+            <div class="card-box">
+                <h3>🚀 Our Mission</h3>
+                <ul>
+                    <li>Strengthen community-led development & local capacities</li>
+                    <li>Support effective programme design & implementation</li>
+                    <li>Promote gender equality, equity & social inclusion</li>
+                    <li>Strengthen livelihoods & local economic opportunities</li>
+                    <li>Generate, document & communicate development knowledge</li>
+                    <li>Develop monitoring frameworks for measurable social impact</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7 Core Values -->
+        <div class="values-grid">
+            <div class="value-card">
+                <h4>1. People-Centred</h4>
+                <p>Development begins with understanding people, their aspirations and lived realities.</p>
+            </div>
+            <div class="value-card">
+                <h4>2. Inclusion</h4>
+                <p>Reaching people traditionally excluded from opportunities and decision-making.</p>
+            </div>
+            <div class="value-card">
+                <h4>3. Participation</h4>
+                <p>Communities are not merely beneficiaries; they are partners and active agents.</p>
+            </div>
+            <div class="value-card">
+                <h4>4. Sustainability</h4>
+                <p>Creating long-term social, institutional, economic and environmental value.</p>
+            </div>
+            <div class="value-card">
+                <h4>5. Evidence</h4>
+                <p>Planning and decisions informed by rigorous evidence, experience and learning.</p>
+            </div>
+            <div class="value-card">
+                <h4>6. Integrity</h4>
+                <p>Grounded in transparency, accountability and high ethical standards.</p>
+            </div>
+            <div class="value-card">
+                <h4>7. Innovation</h4>
+                <p>Leveraging digital tools and responsible AI to strengthen development practice.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10 Service Areas -->
+    <section id="services" style="background: #eaf2ee;">
+        <div class="section-header">
+            <h2>What We Do: 10 Interconnected Service Areas</h2>
+            <p>Available as focused technical assignments or integrated end-to-end support packages across the project lifecycle.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.1</span>
+                    <h3>Development Project Consultancy</h3>
+                    <p>Full lifecycle support: Ideation → Concept → Design → Planning → Implementation → M&E → Learning.</p>
+                    <ul>
+                        <li>Project concept notes & proposal preparation</li>
+                        <li>Detailed Project Reports (DPRs) & work plans</li>
+                        <li>Logical Frameworks & Theory of Change</li>
+                        <li>Implementation strategies & monitoring frameworks</li>
+                        <li>Outcome documentation & project reviews</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.2</span>
+                    <h3>Research, Assessment & Evaluation</h3>
+                    <p>From Evidence to Action: Research → Analysis → Findings → Recommendations → Action.</p>
+                    <ul>
+                        <li>Baseline, Mid-term & End-line studies</li>
+                        <li>Scoping, Needs & Social assessments</li>
+                        <li>Participatory research & community consultations</li>
+                        <li>Programme evaluations & Impact assessments</li>
+                        <li>Qualitative research reports & Policy briefs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.3 • Signature Expertise</span>
+                    <h3>Gender, Equity & Social Inclusion (GESI)</h3>
+                    <p>Mainstreaming equity and empowerment across institutions and communities.</p>
+                    <ul>
+                        <li>Gender mainstreaming & gender-responsive planning</li>
+                        <li>Gender analysis & gender budgeting support</li>
+                        <li>Women's empowerment & gender sensitisation</li>
+                        <li>Vulnerability assessments & social inclusion strategies</li>
+                        <li>Community-level gender interventions & documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.4</span>
+                    <h3>Livelihood & Local Economic Development</h3>
+                    <p>Building sustainable rural and urban livelihood ecosystems.</p>
+                    <ul>
+                        <li>Livelihood planning & SHG-based livelihoods</li>
+                        <li>Micro-enterprise & Community Enterprise development</li>
+                        <li>Entrepreneurship promotion & skill development</li>
+                        <li>Market linkage, value-chain & business planning</li>
+                        <li>Urban livelihoods & Local Economic Development (LED)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.5</span>
+                    <h3>Local Governance & Community Development</h3>
+                    <p>Built on direct field experience with local governments and community institutions.</p>
+                    <ul>
+                        <li>Decentralised, participatory & local development planning</li>
+                        <li>Community mobilisation & CBO/SHG strengthening</li>
+                        <li>Institution building & community-based monitoring</li>
+                        <li>Urban development & poverty reduction strategies</li>
+                        <li>Community-led localisation of SDGs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.6</span>
+                    <h3>Training & Capacity Building</h3>
+                    <p>One-day workshops, multi-day trainings, residential programmes, ToT & online sessions.</p>
+                    <ul>
+                        <li>Training Needs Assessment (TNA) & module development</li>
+                        <li>Training facilitation & Training of Trainers (ToT)</li>
+                        <li>Community leadership & team building</li>
+                        <li>Project management, documentation & IEC training</li>
+                        <li>Governance, gender & entrepreneurship training</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.7</span>
+                    <h3>Development Communication & Documentation</h3>
+                    <p>Clear, credible and high-impact publications and institutional reports.</p>
+                    <ul>
+                        <li>Annual, monthly, quarterly & administration reports</li>
+                        <li>Impact reports & best-practice documentation</li>
+                        <li>Case studies, success stories & development articles</li>
+                        <li>Concept notes & campaign communication</li>
+                        <li>IEC planning and bilingual content development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.8</span>
+                    <h3>Campaign Design & Social Media</h3>
+                    <p>End-to-end communication campaigns for behaviour change and public awareness.</p>
+                    <ul>
+                        <li>Campaign concept, audience & multi-platform strategy</li>
+                        <li>Themes: Gender equality, Waste management, Public health</li>
+                        <li>Themes: Livelihoods, Climate action, Social protection</li>
+                        <li>Creative content plans, outreach & monitoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.9</span>
+                    <h3>Environment & Community Sustainability</h3>
+                    <p>Community-led environmental action and sustainable resource models.</p>
+                    <ul>
+                        <li>Community-based waste management initiatives</li>
+                        <li>Behaviour change communication (BCC)</li>
+                        <li>SHG & community green enterprise models</li>
+                        <li>Environmental awareness campaigns & sustainability plans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="service-num">Service Area 4.10</span>
+                    <h3>Digital & AI-Based Knowledge Services</h3>
+                    <p>Responsible AI-enabled methods verified by human professionals.</p>
+                    <ul>
+                        <li>Knowledge management systems & digital repositories</li>
+                        <li>Digital documentation, archiving & learning resources</li>
+                        <li>AI-assisted research synthesis, drafting & summarisation</li>
+                        <li>Orientation on responsible AI use for development bodies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6-Stage Approach & Engagement Flow -->
+    <section id="approach">
+        <div class="section-header">
+            <h2>Our 6-Stage Development Approach</h2>
+            <p>Connecting listening and analysis with design, execution, learning, and wider adoption.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="approach-steps">
+            <div class="step-card">
+                <span class="step-num">1</span>
+                <h4>LISTEN</h4>
+                <p>Understand communities, institutions and stakeholders.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">2</span>
+                <h4>ANALYSE</h4>
+                <p>Identify needs, gaps, opportunities and evidence.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">3</span>
+                <h4>DESIGN</h4>
+                <p>Develop practical and context-sensitive solutions.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">4</span>
+                <h4>IMPLEMENT</h4>
+                <p>Support effective field and institutional execution.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">5</span>
+                <h4>LEARN</h4>
+                <p>Capture experience, evidence and key lessons.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">6</span>
+                <h4>SCALE</h4>
+                <p>Strengthen successful models for wider adoption.</p>
+            </div>
+        </div>
+
+        <div class="card-box" style="margin-top:30px;">
+            <h3>📋 Standard 6-Step Client Engagement Flow</h3>
+            <p style="font-size:14px;"><strong>1. Initial Discussion</strong> (Understand context & intended outcomes) → <strong>2. Scope Definition</strong> (Objectives, deliverables & timeline) → <strong>3. Proposal / Work Plan</strong> (Technical & financial proposal) → <strong>4. Delivery</strong> (Research, consultancy, training or documentation) → <strong>5. Review & Quality Assurance</strong> (Validation & feedback incorporation) → <strong>6. Handover & Learning</strong> (Final outputs & recommendations).</p>
+        </div>
+    </section>
+
+    <!-- Who We Work With -->
+    <section id="clients" style="background: #eaf2ee;">
+        <div class="section-header">
+            <h2>Who We Work With</h2>
+            <p>Partnering with institutions across the development and social-impact ecosystem.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="sectors-grid">
+            <div class="sector-box">
+                <h4>🏛️ Government & Public Bodies</h4>
+                <p>Government Departments, State Missions, Local Self-Governments, and Government-supported programmes.</p>
+            </div>
+            <div class="sector-box">
+                <h4>🤝 Development Organisations</h4>
+                <p>NGOs, Foundations, Civil Society Organisations (CSOs), and Community-Based Organisations (CBOs).</p>
+            </div>
+            <div class="sector-box">
+                <h4>🏢 CSR Sector</h4>
+                <p>Corporate CSR Foundations, Corporate CSR Departments, and CSR Implementation Agencies.</p>
+            </div>
+            <div class="sector-box">
+                <h4>🎓 Research & Knowledge Bodies</h4>
+                <p>Universities, Research Centres, Think Tanks, and Training Institutions.</p>
+            </div>
+            <div class="sector-box">
+                <h4>🌐 Development Agencies</h4>
+                <p>International Development Organisations, Multilateral & Bilateral Programmes, Technical Assistance Agencies.</p>
+            </div>
+            <div class="sector-box">
+                <h4>🌱 Social Enterprises & Consultancies</h4>
+                <p>Impact-driven Startups, Community Enterprises, and Consultancies seeking specialist associates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders & 7 Partners -->
+    <section id="leadership">
+        <div class="section-header">
+            <h2>Founders & Leadership Team</h2>
+            <p>Led by 7 Founding Partners with equal partnership commitment, each heading a specialized functional domain.</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Founder Spotlight: Beena E. -->
+        <div class="founder-highlight">
+            <h3>Beena E.</h3>
+            <span class="founder-role">Founder & Development Consultant | COO & Designated Partner (Leads Strategy, Operations & Project Implementation - 4.1)</span>
+            <p style="font-size:14.5px;">Beena brings extensive grassroots and state-level experience in community-led development, poverty reduction, livelihoods, gender, local governance, housing, social inclusion, community mobilisation and programme implementation. Her long professional journey with <strong>Kudumbashree – State Poverty Eradication Mission, Government of Kerala</strong> has provided deep exposure to programmes involving communities, local governments, women, vulnerable groups, and urban & rural development.</p>
+            <div class="exp-tags">
+                <span class="exp-tag">Poverty Eradication</span>
+                <span class="exp-tag">Women's Empowerment & GESI</span>
+                <span class="exp-tag">Urban & Rural Livelihoods</span>
+                <span class="exp-tag">SHG / CBO Strengthening</span>
+                <span class="exp-tag">Local Governance</span>
+                <span class="exp-tag">Housing Programmes</span>
+                <span class="exp-tag">Waste Management Initiatives</span>
+                <span class="exp-tag">Project Planning, DPRs & Documentation</span>
+            </div>
+        </div>
+
+        <!-- All 7 Founding Partners Portfolio Structure -->
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>Partner 1: Beena E.</h4>
+                <span>COO & Designated Partner</span>
+                <p><strong>Focus Area:</strong> Strategy, Business Development, Operations & Development Project Consultancy (4.1).</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 2: Founding Partner</h4>
+                <span>Secretary & Designated Partner</span>
+                <p><strong>Focus Area:</strong> Administration, Finance, Accounts, Statutory Compliance & Contracts.</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 3: Founding Partner</h4>
+                <span>Partner – Research & Evaluation</span>
+                <p><strong>Focus Area:</strong> Research Design, Baseline/End-line Studies, Assessments & Programme Evaluation (4.2).</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 4: Founding Partner</h4>
+                <span>Chairperson & Partner – GESI</span>
+                <p><strong>Focus Area:</strong> Gender, Equity & Social Inclusion, Gender Budgeting & Vulnerability Studies (4.3).</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 5: Founding Partner</h4>
+                <span>Partner – Livelihood & Environment</span>
+                <p><strong>Focus Area:</strong> Livelihoods, Local Economic Development, Waste Management & Sustainability (4.4, 4.9).</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 6: Founding Partner</h4>
+                <span>Partner – Governance & Training</span>
+                <p><strong>Focus Area:</strong> Local Governance, Community Development, TNA, Modules & Capacity Building (4.5, 4.6).</p>
+            </div>
+            <div class="partner-card">
+                <h4>Partner 7: Founding Partner</h4>
+                <span>Partner – Communication, Digital & AI</span>
+                <p><strong>Focus Area:</strong> Development Documentation, IEC Campaigns, Social Media & Responsible AI Services (4.7, 4.8, 4.10).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Proposal Enquiry -->
+    <section id="contact" style="background: #eaf2ee;">
+        <div class="section-header">
+            <h2>Contact Us / Request a Proposal</h2>
+            <p>Share a brief description of your requirement, expected outputs, and indicative timeline. We will respond with a tailored technical approach and proposal.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card-box">
+                <h3>📍 Organisation Details</h3>
+                <p style="font-size:14px; margin-bottom:8px;"><strong>Organisation:</strong> Sustaina Solutions LLP</p>
+                <p style="font-size:14px; margin-bottom:8px;"><strong>Contact Person:</strong> Beena E., Founder & Development Consultant</p>
+                <p style="font-size:14px; margin-bottom:8px;"><strong>Location:</strong> Kerala, India</p>
+                <hr style="margin:14px 0; border:none; border-top:1px solid #ddd;">
+                <h4 style="color:var(--primary); font-size:15px; margin-bottom:6px;">🛡️ Quality, Ethics & Responsible AI</h4>
+                <p style="font-size:13px; color:var(--muted);">All deliverables undergo rigorous human verification and quality control. Client data and sensitive records are handled with strict confidentiality.</p>
+            </div>
+
+            <form class="card-box contact-form" style="grid-column: span 2;" onsubmit="submitProposalRequest(event)">
+                <h3>✉️ Consultancy & Proposal Enquiry Form</h3>
+                <label>Your Name & Designation</label>
+                <input type="text" id="client-name" required placeholder="Enter your name and role">
+
+                <label>Organisation / Institution / Department</label>
+                <input type="text" id="client-org" required placeholder="e.g., Local Government / NGO / CSR Foundation / State Mission">
+
+                <label>Email & Phone Number</label>
+                <input type="text" id="client-contact" required placeholder="Phone / WhatsApp number and Email ID">
+
+                <label>Required Service Area</label>
+                <select id="client-service">
+                    <option value="4.1 Development Project Consultancy (DPR / Proposal)">4.1 Development Project Consultancy (Concept / DPR / M&E)</option>
+                    <option value="4.2 Research, Assessment & Evaluation">4.2 Research, Baseline/End-line & Impact Evaluation</option>
+                    <option value="4.3 Gender, Equity & Social Inclusion (GESI)">4.3 Gender, Equity & Social Inclusion (GESI)</option>
+                    <option value="4.4 Livelihood & Local Economic Development">4.4 Livelihood & Local Economic Development</option>
+                    <option value="4.5 Local Governance & Community Development">4.5 Local Governance & Community Development</option>
+                    <option value="4.6 Training & Capacity Building (Modules / ToT)">4.6 Training & Capacity Building (Modules / ToT)</option>
+                    <option value="4.7 Development Communication & Documentation">4.7 Development Communication, Reports & Case Studies</option>
+                    <option value="4.8 Campaign Design & Social Media">4.8 IEC Campaign Design & Social Media</option>
+                    <option value="4.9 Environment & Community Waste Management">4.9 Environment & Community-Based Sustainability</option>
+                    <option value="4.10 Digital & Responsible AI Knowledge Services">4.10 Digital & AI-Based Knowledge Services</option>
+                </select>
+
+                <label>Brief Description of Requirement, Expected Outputs & Timeline</label>
+                <textarea id="client-brief" rows="3" required placeholder="Describe your project scope, expected deliverables and timeline..."></textarea>
+
+                <button type="submit" class="btn-primary" style="width:100%;">Submit Proposal Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>SUSTAINA SOLUTIONS LLP</strong> — Development Consultancy & Knowledge Solutions</p>
+        <p style="margin-top:6px; font-size:13px; opacity:0.85;">"From Development Ideas to Sustainable Solutions" | Supporting inclusive, sustainable and community-led development</p>
+        <p style="margin-top:12px; font-size:12px; opacity:0.7;">&copy; 2026 Sustaina Solutions LLP. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function submitProposalRequest(e) {
+            e.preventDefault();
+            const name = document.getElementById('client-name').value;
+            const org = document.getElementById('client-org').value;
+            const service = document.getElementById('client-service').value;
+            alert(`നന്ദി ${name} (${org})!\n\n"${service}" സംബന്ധിച്ച നിങ്ങളുടെ പ്രൊപ്പോസൽ അന്വേഷണം Sustaina Solutions LLP-യിൽ രേഖപ്പെടുത്തിയിട്ടുണ്ട്. ഞങ്ങൾ ഉടൻ തന്നെ സാങ്കേതിക പ്രൊപ്പോസലുമായി ബന്ധപ്പെടുന്നതാണ്.`);
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
